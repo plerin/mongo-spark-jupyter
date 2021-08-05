@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-set -e
+set -e # mongo 실행 중이면 문구 띄우고 종료
 (
 if lsof -Pi :27017 -sTCP:LISTEN -t >/dev/null ; then
     echo "Please terminate the local mongod on 27017"
@@ -9,7 +9,7 @@ fi
 )
 
 echo "Starting docker ."
-docker-compose up -d --build
+docker-compose up -d --build    # -d : 백그라운드, -build : 서비스 시작 전 이미지 새로 생성
 
 function clean_up {
     echo "\n\nShutting down....\n\n"
