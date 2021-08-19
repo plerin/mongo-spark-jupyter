@@ -43,6 +43,8 @@ services:
       - shared-workspace:/opt/workspace
     depends_on:
       - spark-master
+    networks:
+      - localnet
   # spark-worker-2:
   #   image: bde2020/spark-worker
   #   container_name: spark-worker-2
